@@ -15,6 +15,16 @@
 		7AC686EB27A55EAC00C3D11D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AC686EA27A55EAC00C3D11D /* Assets.xcassets */; };
 		7AC686EE27A55EAC00C3D11D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AC686EC27A55EAC00C3D11D /* LaunchScreen.storyboard */; };
 		7AC686F627A5624E00C3D11D /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC686F527A5624E00C3D11D /* CurrencyService.swift */; };
+		C31C05D5280AF56000EC32EC /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C05D4280AF56000EC32EC /* Currency.swift */; };
+		C31C05D7280AF57500EC32EC /* CurrenciesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C05D6280AF57500EC32EC /* CurrenciesResponse.swift */; };
+		C31C05DC280AFD6000EC32EC /* CurrenciesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C05DB280AFD6000EC32EC /* CurrenciesApi.swift */; };
+		C31C05DE280AFD9C00EC32EC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C05DD280AFD9C00EC32EC /* NetworkError.swift */; };
+		C31C05E2280B015C00EC32EC /* CryptosApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C05E1280B015C00EC32EC /* CryptosApi.swift */; };
+		C31C05E4280B028A00EC32EC /* CryptoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C05E3280B028A00EC32EC /* CryptoResponse.swift */; };
+		C31C05E6280B11BC00EC32EC /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C05E5280B11BC00EC32EC /* ImageDownloader.swift */; };
+		C31C05E9280B168200EC32EC /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C05E8280B168200EC32EC /* CustomTableViewCell.swift */; };
+		C31C05EC280B58DF00EC32EC /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C05EB280B58DF00EC32EC /* Double+Extension.swift */; };
+		C31C05EE280B6F2B00EC32EC /* SupportedCurrenciesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C05ED280B6F2B00EC32EC /* SupportedCurrenciesApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +39,16 @@
 		7AC686ED27A55EAC00C3D11D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7AC686EF27A55EAC00C3D11D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AC686F527A5624E00C3D11D /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
+		C31C05D4280AF56000EC32EC /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		C31C05D6280AF57500EC32EC /* CurrenciesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesResponse.swift; sourceTree = "<group>"; };
+		C31C05DB280AFD6000EC32EC /* CurrenciesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesApi.swift; sourceTree = "<group>"; };
+		C31C05DD280AFD9C00EC32EC /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		C31C05E1280B015C00EC32EC /* CryptosApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptosApi.swift; sourceTree = "<group>"; };
+		C31C05E3280B028A00EC32EC /* CryptoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoResponse.swift; sourceTree = "<group>"; };
+		C31C05E5280B11BC00EC32EC /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		C31C05E8280B168200EC32EC /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		C31C05EB280B58DF00EC32EC /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		C31C05ED280B6F2B00EC32EC /* SupportedCurrenciesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrenciesApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,17 +82,99 @@
 		7AC686E027A55EAB00C3D11D /* Interview */ = {
 			isa = PBXGroup;
 			children = (
-				7AC686E127A55EAB00C3D11D /* AppDelegate.swift */,
-				7AC686E327A55EAB00C3D11D /* SceneDelegate.swift */,
-				7AC686E527A55EAB00C3D11D /* CurrenciesViewController.swift */,
-				7A1EF29127A585B1008E182D /* CurrencyDetailViewController.swift */,
-				7AC686F527A5624E00C3D11D /* CurrencyService.swift */,
-				7AC686E727A55EAB00C3D11D /* Main.storyboard */,
-				7AC686EA27A55EAC00C3D11D /* Assets.xcassets */,
-				7AC686EC27A55EAC00C3D11D /* LaunchScreen.storyboard */,
+				C31C05D1280AF53400EC32EC /* AppDelegate */,
+				C31C05D2280AF54600EC32EC /* Constants */,
+				C31C05D3280AF55300EC32EC /* Models */,
+				C31C05EA280B58CE00EC32EC /* Extensions */,
+				C31C05DA280AFD4000EC32EC /* Network */,
+				C31C05D8280AF59100EC32EC /* Resources */,
+				C31C05D9280AF59D00EC32EC /* Storyboards */,
+				C31C05E7280B167300EC32EC /* Views */,
+				C31C05E0280AFE9500EC32EC /* ViewControllers */,
 				7AC686EF27A55EAC00C3D11D /* Info.plist */,
 			);
 			path = Interview;
+			sourceTree = "<group>";
+		};
+		C31C05D1280AF53400EC32EC /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				7AC686E127A55EAB00C3D11D /* AppDelegate.swift */,
+				7AC686E327A55EAB00C3D11D /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		C31C05D2280AF54600EC32EC /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				7AC686F527A5624E00C3D11D /* CurrencyService.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		C31C05D3280AF55300EC32EC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C31C05E3280B028A00EC32EC /* CryptoResponse.swift */,
+				C31C05D6280AF57500EC32EC /* CurrenciesResponse.swift */,
+				C31C05D4280AF56000EC32EC /* Currency.swift */,
+				C31C05DD280AFD9C00EC32EC /* NetworkError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C31C05D8280AF59100EC32EC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7AC686EA27A55EAC00C3D11D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C31C05D9280AF59D00EC32EC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				7AC686E727A55EAB00C3D11D /* Main.storyboard */,
+				7AC686EC27A55EAC00C3D11D /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		C31C05DA280AFD4000EC32EC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C31C05DB280AFD6000EC32EC /* CurrenciesApi.swift */,
+				C31C05E1280B015C00EC32EC /* CryptosApi.swift */,
+				C31C05ED280B6F2B00EC32EC /* SupportedCurrenciesApi.swift */,
+				C31C05E5280B11BC00EC32EC /* ImageDownloader.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C31C05E0280AFE9500EC32EC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7AC686E527A55EAB00C3D11D /* CurrenciesViewController.swift */,
+				7A1EF29127A585B1008E182D /* CurrencyDetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C31C05E7280B167300EC32EC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C31C05E8280B168200EC32EC /* CustomTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C31C05EA280B58CE00EC32EC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C31C05EB280B58DF00EC32EC /* Double+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +187,7 @@
 				7AC686DA27A55EAB00C3D11D /* Sources */,
 				7AC686DB27A55EAB00C3D11D /* Frameworks */,
 				7AC686DC27A55EAB00C3D11D /* Resources */,
+				C31C05DF280AFDB500EC32EC /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -141,16 +244,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C31C05DF280AFDB500EC32EC /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7AC686DA27A55EAB00C3D11D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C31C05D5280AF56000EC32EC /* Currency.swift in Sources */,
 				7AC686F627A5624E00C3D11D /* CurrencyService.swift in Sources */,
+				C31C05EC280B58DF00EC32EC /* Double+Extension.swift in Sources */,
 				7AC686E627A55EAB00C3D11D /* CurrenciesViewController.swift in Sources */,
+				C31C05DC280AFD6000EC32EC /* CurrenciesApi.swift in Sources */,
 				7AC686E227A55EAB00C3D11D /* AppDelegate.swift in Sources */,
+				C31C05D7280AF57500EC32EC /* CurrenciesResponse.swift in Sources */,
+				C31C05DE280AFD9C00EC32EC /* NetworkError.swift in Sources */,
 				7AC686E427A55EAB00C3D11D /* SceneDelegate.swift in Sources */,
 				7A1EF29227A585B1008E182D /* CurrencyDetailViewController.swift in Sources */,
+				C31C05E4280B028A00EC32EC /* CryptoResponse.swift in Sources */,
+				C31C05E6280B11BC00EC32EC /* ImageDownloader.swift in Sources */,
+				C31C05E2280B015C00EC32EC /* CryptosApi.swift in Sources */,
+				C31C05EE280B6F2B00EC32EC /* SupportedCurrenciesApi.swift in Sources */,
+				C31C05E9280B168200EC32EC /* CustomTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
