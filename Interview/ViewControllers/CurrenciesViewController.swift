@@ -15,6 +15,7 @@ class CurrenciesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var fiatCurrencyButton: UIButton!
 
+    private var timer: AnyCancellable?
     private var subscriptions = Set<AnyCancellable>()
     private let selectedCurrency = CurrentValueSubject<String, Never>("USD")
     var snapshot = NSDiffableDataSourceSnapshot<Int, CryptoResponse>()
@@ -27,10 +28,12 @@ class CurrenciesViewController: UIViewController {
             cell.textLabel?.text = itemIdentifier.name
             cell.imageView?.frame = CGRect(x: 20.25, y: 12, width: 20, height: 20)
 
-            ImageDownloader.download(url: itemIdentifier.image) { image in
-                guard let image = image else { return }
-                DispatchQueue.main.async {
-                    cell.imageView?.image = image
+            DispatchQueue.global().async {
+                ImageDownloader.download(url: itemIdentifier.image) { image in
+                    guard let image = image else { return }
+                    DispatchQueue.main.async {
+                        cell.imageView?.image = image
+                    }
                 }
             }
 
@@ -42,12 +45,21 @@ class CurrenciesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        configureFiatSelector()
-        configureCryptoSelector()
-
         snapshot = datasource.snapshot()
         snapshot.appendSections([0])
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configureFiatSelector()
+        configureCryptoSelector()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        subscriptions.forEach { $0.cancel() }
+        subscriptions.removeAll()
+        timer?.cancel()
     }
 
     private func configureFiatSelector() {
@@ -84,25 +96,31 @@ class CurrenciesViewController: UIViewController {
 
     private func configureCryptoSelector() {
         selectedCurrency
-            .sink(receiveValue: { [weak self] value in
-                guard let `self` = self else { return }
-                CryptosApi.cryptos(with: value)
-                    .receive(on: DispatchQueue.main)
-                    .sink { completion in
-                        switch completion {
-                        case .finished: break
-                        case .failure(let error):
-                            print("Error: \(error)")
-                        }
-                    } receiveValue: { [unowned self] value in
-                        self.cryptos = value
-                        self.snapshot.deleteItems(self.snapshot.itemIdentifiers)
-                        self.snapshot.appendItems(value, toSection: 0)
-                        self.datasource.apply(self.snapshot)
-                    }
-                    .store(in: &self.subscriptions)
+            .sink(receiveValue: { value in
+                cryptos(with: value)
             })
             .store(in: &subscriptions)
+
+        timer = Timer.publish(every: 10, on: RunLoop.main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                guard let `self` = self else { return }
+                cryptos(with: self.selectedCurrency.value)
+            }
+
+        func cryptos(with currency: String) {
+            CryptosApi.cryptos(with: selectedCurrency.value) { cryptos, error in
+                guard let cryptos = cryptos else {
+                    print("Error: \(String(describing: error))")
+                    return
+                }
+
+                self.cryptos = cryptos
+                self.snapshot.deleteItems(self.snapshot.itemIdentifiers)
+                self.snapshot.appendItems(cryptos, toSection: 0)
+                self.datasource.apply(self.snapshot)
+            }
+        }
     }
 
     private func setCurrenciesMenu(with actions: [UIAction]) {

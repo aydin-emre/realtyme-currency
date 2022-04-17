@@ -9,10 +9,10 @@ import Foundation
 import Combine
 
 enum CryptosApi {
-    static func cryptos(with currency: String) -> AnyPublisher<Cryptos, NetworkError> {
+    static func cryptos(with currency: String, completion: @escaping (Cryptos?, NetworkError?) -> Void) {
         guard let url = URL(string: String(format: CurrencyService.cryptoApiUrl, currency)) else {
-            return Fail(error: NetworkError.invalidURL)
-                .eraseToAnyPublisher()
+            completion(nil, NetworkError.invalidURL)
+            return
         }
 
         let config = URLSessionConfiguration.default
@@ -21,18 +21,17 @@ enum CryptosApi {
         let session = URLSession(configuration: config)
         let urlRequest = URLRequest(url: url)
 
-        return session.dataTaskPublisher(for: urlRequest)
-            .tryMap { response -> Data in
-                guard
-                    let httpURLResponse = response.response as? HTTPURLResponse,
-                    httpURLResponse.statusCode == 200
-                else {
-                    throw NetworkError.statusCode
-                }
-                return response.data
+        session.dataTask(with: urlRequest) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let data = data, error == nil,
+                let decodedResponse = try? JSONDecoder().decode(Cryptos.self, from: data)
+            else {
+                completion(nil, NetworkError.statusCode)
+                return
             }
-            .decode(type: Cryptos.self, decoder: JSONDecoder())
-            .mapError { NetworkError.map($0) }
-            .eraseToAnyPublisher()
+
+            completion(decodedResponse, nil)
+        }.resume()
     }
 }
